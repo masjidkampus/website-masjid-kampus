@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Layanan Masjid Kampus UMS">
+  <title>Layanan — Masjid Kampus UMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header class="site-header">
+  <div class="container nav-wrap">
+    <a class="brand" href="index.html">
+      <span class="brand-mark"><img src="image/ums-profil.jpg" alt="Logo Universitas Muhammadiyah Surakarta" /></span>
+      <span><strong>Masjid Kampus UMS</strong><small>Universitas Muhammadiyah Surakarta</small></span>
+    </a>
+    <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+    <nav class="nav" id="mainNav">
+      <a href="index.html#tentang">Tentang</a>
+      <a href="index.html#shalat">Jadwal Shalat</a>
+      <a href="index.html#kegiatan">Kegiatan</a>
+      <a href="layanan.html" class="active">Layanan</a>
+      <a href="index.html#donasi">Donasi</a>
+      <!-- <a href="index.html#galeri">Galeri</a> -->
+      <a href="index.html#kontak" class="nav-cta">Hubungi Kami</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="service-detail-hero">
+    <div class="container service-detail-hero-inner">
+      <a class="detail-breadcrumb" href="layanan.html">Layanan <span>/</span> <b id="breadcrumbService">Memuat...</b></a>
+      <div class="eyebrow detail-eyebrow" id="detailEyebrow">LAYANAN</div>
+      <h1 id="detailTitle">Memuat informasi layanan...</h1>
+      <p id="detailIntro">Silakan tunggu.</p>
+    </div>
+  </section>
+
+  <section class="detail-info-section">
+    <div class="container detail-layout">
+      <div class="detail-main">
+        <div class="requirements-card">
+          <div class="eyebrow">SYARAT & KETENTUAN</div>
+          <h2 id="infoTitle">Syarat & Ketentuan</h2>
+          <div id="infoList" class="requirements-list"></div>
+          <div id="serviceDataTable" class="service-data-table" hidden></div>
+          <div class="service-action-row" id="actionButtons"></div>
+        </div>
+
+        <div class="detail-form-wrap" id="formWrap" hidden>
+          <div class="form-top">
+            <a href="#" class="back-to-info" id="backToInfo">← Kembali ke informasi</a>
+            <div class="eyebrow" id="formEyebrow">PENGAJUAN</div>
+            <h2 id="formTitle">Form Pengajuan</h2>
+            <p id="formDescription"></p>
+          </div>
+          <form class="service-form" id="serviceForm"></form>
+        </div>
+      </div>
+
+      <aside class="detail-side-card">
+        <div class="side-info-icon">i</div>
+        <h3>Informasi penting</h3>
+        <p>Isi data dengan benar agar pengelola dapat memproses pengajuan dengan cepat. Persetujuan akhir tetap berada pada pengelola Masjid Kampus UMS.</p>
+        <div class="side-divider"></div>
+        <strong>Butuh bantuan?</strong>
+        <a href="index.html#kontak">Hubungi pengelola →</a>
+      </aside>
+    </div>
+  </section>
+</main>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="service-page.js"></script>
+</body>
+</html>

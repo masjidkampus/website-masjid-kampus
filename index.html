@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description"
+    content="Website Masjid Kampus UMS — layanan, kegiatan, jadwal shalat, donasi, dan informasi masjid.">
+  <title>Masjid Kampus UMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap"
+    rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+  <header class="site-header">
+    <div class="container nav-wrap">
+      <a class="brand" href="index.html">
+        <span class="brand-mark"><img src="image/ums-profil.jpg" alt="Logo Universitas Muhammadiyah Surakarta" /></span>
+        <span><strong>Masjid Kampus UMS</strong><small>Universitas Muhammadiyah Surakarta</small></span>
+      </a>
+      <button class="menu-toggle" id="menuToggle" aria-label="Buka menu">☰</button>
+      <nav class="nav" id="mainNav">
+        <a href="index.html#tentang">Tentang</a>
+        <a href="index.html#shalat">Jadwal Shalat</a>
+        <a href="index.html#kegiatan">Kegiatan</a>
+        <a href="layanan.html">Layanan</a>
+        <a href="index.html#donasi">Donasi</a>
+        <!-- <a href="index.html#galeri">Galeri</a> -->
+        <a href="admin.html" class="nav-cta">Login</a>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <section class="hero section">
+      <div class="hero-glow"></div>
+      <div class="container hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow">MASJID KAMPUS UMS</div>
+          <h1>Ruang ibadah, <span>pelayanan,</span> ilmu, dan kebaikan.</h1>
+          <p class="hero-text">Selamat datang di pusat informasi Masjid Kampus UMS. Temukan jadwal shalat, kegiatan,
+            layanan masjid, informasi donasi, dan berbagai kebutuhan jamaah.</p>
+          <div class="hero-actions">
+            <a href="layanan.html" class="btn btn-primary">Lihat Layanan</a>
+            <a href="#tentang" class="btn btn-ghost">Tentang Masjid</a>
+          </div>
+          <div class="hero-note"><span class="status-dot"></span><span id="nextPrayerText">Memuat jadwal
+              shalat...</span></div>
+        </div>
+        <div class="hero-card reveal">
+          <div class="mosque-art">
+            <div class="moon"></div>
+            <div class="stars">✦ &nbsp; ✧ &nbsp; ✦</div>
+            <div class="dome"></div>
+            <div class="minaret minaret-left"></div>
+            <div class="minaret minaret-right"></div>
+            <div class="mosque-body">
+              <div class="arch arch-a"></div>
+              <div class="arch arch-b"></div>
+              <div class="arch arch-c"></div>
+            </div>
+          </div>
+          <div class="hero-card-bottom">
+            <div><small>Universitas Muhammadiyah Surakarta</small><strong>Masjid Kampus UMS</strong></div>
+            <span class="pin">⌖</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- <section class="quick-strip">
+  <div class="container quick-grid">
+    <div class="quick-item"><span class="quick-icon">☾</span><div><small>Imam</small><strong>Ust. Ahmad Fauzan</strong></div></div>
+    <div class="quick-item"><span class="quick-icon">◷</span><div><small>Shalat Jumat</small><strong>12:00 WIB</strong></div></div>
+    <div class="quick-item"><span class="quick-icon">✦</span><div><small>Kajian</small><strong>Sabtu • 19:30 WIB</strong></div></div>
+    <div class="quick-item"><span class="quick-icon">♡</span><div><small>Layanan</small><strong>Ajukan secara online</strong></div></div>
+  </div>
+</section> -->
+
+    <section class="section" id="tentang">
+      <div class="container split-grid">
+        <div class="section-heading reveal">
+          <div class="eyebrow">TENTANG MASJID</div>
+          <h2>Masjid yang dekat dengan civitas dan masyarakat.</h2>
+          <p>Masjid Kampus UMS menjadi ruang ibadah sekaligus tempat bertemunya kegiatan akademik, sosial, dakwah, dan
+            pelayanan umat.</p>
+          <div class="stat-row">
+            <div><strong>24/7</strong><span>Akses informasi digital</span></div>
+            <div><strong>5+</strong><span>Layanan utama</span></div>
+            <div><strong>UMS</strong><span>Berbasis kampus</span></div>
+          </div>
+        </div>
+        <div class="feature-list reveal">
+          <article class="feature"><span>01</span>
+            <div>
+              <h3>Ibadah</h3>
+              <p>Fasilitas dan lingkungan yang mendukung ibadah jamaah kampus dan masyarakat.</p>
+            </div>
+          </article>
+          <article class="feature"><span>02</span>
+            <div>
+              <h3>Pelayanan</h3>
+              <p>Pengajuan peminjaman, media partner, barang temuan, serta kritik dan saran dalam satu tempat.</p>
+            </div>
+          </article>
+          <article class="feature"><span>03</span>
+            <div>
+              <h3>Kemanfaatan</h3>
+              <p>Mendukung kegiatan positif, pendidikan, dakwah, dan kemaslahatan bersama.</p>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section class="section section-dark" id="shalat">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="eyebrow light">WAKTU IBADAH</div>
+            <h2>Jadwal shalat hari ini</h2>
+          </div>
+          <div class="today-box"><span id="todayDate">Memuat...</span><span>WIB</span></div>
+        </div>
+        <div class="prayer-grid" id="prayerGrid">
+          <div class="loading-card">Memuat jadwal...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="kegiatan">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="eyebrow">AGENDA MASJID</div>
+            <h2>Kegiatan yang akan datang</h2>
+          </div><a class="text-link" href="kegiatan.html">Lihat semua →</a>
+        </div>
+        <div class="events-grid" id="eventsGrid">
+          <div class="loading-card">Memuat kegiatan...</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section services-preview">
+      <div class="container">
+        <div class="section-title-row reveal">
+          <div>
+            <div class="eyebrow">PELAYANAN</div>
+            <h2>Butuh layanan masjid?</h2>
+          </div><a class="btn btn-primary" href="layanan.html">Buka semua layanan</a>
+        </div>
+        <div class="service-preview-grid">
+          <a class="service-mini" href="layanan-detail.html?service=peminjaman-masjid"><span>01</span><strong>Peminjaman
+              Masjid</strong><small>Ajukan penggunaan fasilitas masjid</small><b>→</b></a>
+          <a class="service-mini" href="layanan-detail.html?service=peminjaman-alat"><span>02</span><strong>Peminjaman
+              Alat</strong><small>Ajukan kebutuhan perlengkapan</small><b>→</b></a>
+          <a class="service-mini" href="layanan-detail.html?service=media-partner"><span>03</span><strong>Media
+              Partner</strong><small>Ajukan kerja sama publikasi</small><b>→</b></a>
+          <a class="service-mini" href="layanan-detail.html?service=barang-temuan"><span>04</span><strong>Barang Hilang
+              & Temuan</strong><small>Informasi dan pengambilan barang</small><b>→</b></a>
+          <a class="service-mini" href="layanan-detail.html?service=kritik-saran"><span>05</span><strong>Kritik &
+              Saran</strong><small>Sampaikan masukan kepada pengelola</small><b>→</b></a>
+        </div>
+      </div>
+    </section>
+
+    <section class="section donation-section" id="donasi">
+      <div class="container donation-grid">
+        <div class="donation-copy reveal">
+          <div class="eyebrow">INFAK & DONASI</div>
+          <h2>Jadikan kebaikan terus mengalir.</h2>
+          <p>Dukungan jamaah membantu operasional masjid dan berbagai kegiatan pelayanan umat.</p><a
+            class="btn btn-primary" href="#kontak">Konfirmasi Donasi</a>
+        </div>
+        <div class="donation-cards reveal" id="donationCards">
+          <div class="loading-card">Memuat rekening...</div>
+        </div>
+      </div>
+    </section>
+
+
+
+    <section class="section contact-section" id="kontak">
+      <div class="container contact-grid">
+        <div class="contact-copy reveal">
+          <div class="eyebrow">TERHUBUNG DENGAN KAMI</div>
+          <h2>Ada pertanyaan atau ingin berkontribusi?</h2>
+          <p>Gunakan form atau pilih admin yang ingin dihubungi melalui WhatsApp.</p>
+          <div class="contact-info">
+            <div><span>Alamat</span><strong>Universitas Muhammadiyah Surakarta, Sukoharjo</strong></div>
+            <div class="contact-admins"><span>Pilih Admin WhatsApp</span>
+              <div class="admin-contact-list"><a class="admin-contact" href="https://wa.me/6285848601435"
+                  target="_blank" rel="noopener"><strong>Muhammad Faris</strong><small>Koordinator Masjid
+                    Fadhlurrahman<br>0858-4860-1435</small></a><a class="admin-contact"
+                  href="https://wa.me/6281904285478" target="_blank" rel="noopener"><strong>Ahmad Fikri
+                    Salim</strong><small>Koordinator Umum Pejuang Masjid<br>0819-0428-5478</small></a><a class="admin-contact"
+                  href="https://wa.me/6282181488897" target="_blank" rel="noopener"><strong>Aryawan
+                    Izzuddin</strong><small>Koordinator Masjid Hj. Sudalmiyah Rais<br>0821-8148-8897</small></a></div>
+            </div>
+            <div><span>Email</span><strong>masjid@ums.ac.id</strong></div>
+          </div>
+        </div>
+        <form class="contact-form reveal" id="contactForm">
+          <label>Nama<input type="text" name="name" required placeholder="Nama lengkap"></label>
+          <label>Email<input type="email" name="email" required placeholder="nama@email.com"></label>
+          <label>Pesan<textarea name="message" rows="5" required placeholder="Tuliskan pesanmu..."></textarea></label>
+          <button class="btn btn-primary" type="submit" id="contactSubmit">Kirim Pesan</button>
+          <p class="form-status" id="formStatus"></p>
+        </form>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container footer-inner">
+      <div><strong>Masjid Kampus UMS</strong>
+        <p>Ibadah • Ilmu • Pelayanan • Kemanfaatan</p>
+      </div>
+      <div class="footer-links">
+        <a href="https://wa.me/6285601224228" target="_blank" rel="noopener" aria-label="WhatsApp"><i class="fab fa-whatsapp"></i></a>
+        <a href="https://www.instagram.com/" target="_blank" rel="noopener" aria-label="Instagram"><i class="fab fa-instagram"></i></a>
+        <a href="https://www.facebook.com/" target="_blank" rel="noopener" aria-label="Facebook"><i class="fab fa-facebook"></i></a>
+      </div><small>© <span id="year"></span> Masjid Kampus UMS</small>
+    </div>
+  </footer>
+  <div class="toast" id="toast"></div>
+  <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+  <script src="config.js"></script>
+  <script src="app.js"></script>
+</body>
+
+</html>

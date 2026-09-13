@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Dashboard admin Masjid Kampus UMS">
+  <title>Dashboard Admin — Masjid Kampus UMS</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="admin.css">
+</head>
+<body>
+<div id="loginView" class="login-shell">
+  <div class="login-decoration"></div>
+  <div class="login-card">
+    <a class="admin-brand" href="index.html">
+      <span class="brand-mark"><img src="image/ums-profil.jpg" alt="Logo Universitas Muhammadiyah Surakarta" /></span>
+      <span><strong>Masjid Kampus UMS</strong><small>Dashboard Pengelola</small></span>
+    </a>
+    <div class="eyebrow">AREA ADMIN</div>
+    <h1>Masuk ke dashboard.</h1>
+    <p class="muted">Gunakan akun admin Supabase untuk mengelola data website.</p>
+    <form id="loginForm">
+      <label>Email<input type="email" id="loginEmail" required autocomplete="email" placeholder="admin@contoh.id"></label>
+      <label>Password<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Password"></label>
+      <button class="btn btn-primary full" id="loginBtn" type="submit">Masuk</button>
+      <p id="loginStatus" class="form-status"></p>
+    </form>
+    <a href="index.html" class="back-link">← Kembali ke website</a>
+  </div>
+</div>
+
+<div id="dashboardView" class="dashboard-shell" hidden>
+  <aside class="sidebar" id="sidebar">
+    <div class="sidebar-top">
+      <a class="admin-brand" href="index.html">
+        <span class="brand-mark"><img src="image/ums-profil.jpg" alt="Logo Universitas Muhammadiyah Surakarta" /></span>
+        <span><strong>Masjid Kampus UMS</strong><small>Admin Panel</small></span>
+      </a>
+      <nav class="admin-nav">
+        <button class="admin-nav-item active" data-section="overview">◫ <span>Ringkasan</span></button>
+        <button class="admin-nav-item" data-section="requests">▣ <span>Pengajuan Layanan</span><b id="requestBadge">0</b></button>
+        <button class="admin-nav-item" data-section="messages">✉ <span>Pesan Kontak</span><b id="messageBadge">0</b></button>
+        <button class="admin-nav-item" data-section="events">◈ <span>Kegiatan</span></button>
+        <button class="admin-nav-item" data-section="donations">◇ <span>Donasi</span></button>
+      </nav>
+    </div>
+    <div class="sidebar-bottom">
+      <a href="index.html" target="_blank">↗ Lihat Website</a>
+      <button id="logoutBtn">↪ Keluar</button>
+    </div>
+  </aside>
+
+  <main class="main-area">
+    <header class="topbar">
+      <button class="hamburger" id="sidebarToggle">☰</button>
+      <div>
+        <div class="eyebrow">PENGELOLAAN MASJID</div>
+        <h2 id="sectionTitle">Ringkasan</h2>
+      </div>
+      <div class="admin-user">
+        <div class="avatar" id="adminAvatar">A</div>
+        <div><strong id="adminEmail">admin</strong><small>Administrator</small></div>
+      </div>
+    </header>
+
+    <div class="content">
+      <section class="panel-section active" data-panel="overview">
+        <div class="stats-grid">
+          <div class="stat-card"><span>Pengajuan Baru</span><strong id="statNew">0</strong><small>perlu diperiksa</small></div>
+          <div class="stat-card"><span>Sedang Diproses</span><strong id="statProcess">0</strong><small>status diproses</small></div>
+          <div class="stat-card"><span>Pesan Masuk</span><strong id="statMessages">0</strong><small>belum ditangani</small></div>
+          <div class="stat-card"><span>Kegiatan</span><strong id="statEvents">0</strong><small>agenda tersimpan</small></div>
+        </div>
+
+        <div class="dashboard-grid-two">
+          <div class="panel-card">
+            <div class="panel-heading"><div><div class="eyebrow">TERBARU</div><h3>Pengajuan terbaru</h3></div><button class="ghost-small" data-open-section="requests">Lihat semua →</button></div>
+            <div id="recentRequests" class="table-list"><div class="empty">Memuat...</div></div>
+          </div>
+          <div class="panel-card">
+            <div class="panel-heading"><div><div class="eyebrow">AKTIVITAS</div><h3>Pesan terbaru</h3></div><button class="ghost-small" data-open-section="messages">Lihat semua →</button></div>
+            <div id="recentMessages" class="table-list"><div class="empty">Memuat...</div></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel-section" data-panel="requests">
+        <div class="panel-card">
+          <div class="panel-heading">
+            <div><div class="eyebrow">LAYANAN</div><h3>Pengajuan layanan</h3><p class="muted">Kelola peminjaman, media partner, barang temuan, serta kritik & saran.</p></div>
+            <div class="filter-row"><select id="requestFilter"><option value="all">Semua status</option><option value="baru">Baru</option><option value="diproses">Diproses</option><option value="disetujui">Disetujui</option><option value="ditolak">Ditolak</option><option value="selesai">Selesai</option></select></div>
+          </div>
+          <div id="requestsTableWrap" class="table-scroll"></div>
+        </div>
+      </section>
+
+      <section class="panel-section" data-panel="messages">
+        <div class="panel-card">
+          <div class="panel-heading"><div><div class="eyebrow">KONTAK</div><h3>Pesan pengunjung</h3></div></div>
+          <div id="messagesTableWrap" class="table-scroll"></div>
+        </div>
+      </section>
+
+      <section class="panel-section" data-panel="events">
+        <div class="split-heading">
+          <div><div class="eyebrow">AGENDA</div><h3>Kelola kegiatan</h3><p class="muted">Tambah agenda yang akan tampil di website.</p></div>
+          <button class="btn btn-primary" id="addEventBtn">+ Tambah Kegiatan</button>
+        </div>
+        <div id="eventsAdminGrid" class="admin-cards-grid"></div>
+      </section>
+
+      <section class="panel-section" data-panel="donations">
+        <div class="split-heading">
+          <div><div class="eyebrow">INFAK & DONASI</div><h3>Kelola rekening donasi</h3><p class="muted">Atur rekening yang ditampilkan pada halaman utama.</p></div>
+          <button class="btn btn-primary" id="addDonationBtn">+ Tambah Rekening</button>
+        </div>
+        <div id="donationsAdminGrid" class="admin-cards-grid"></div>
+      </section>
+    </div>
+  </main>
+</div>
+
+<!-- Modal detail / form -->
+<div class="modal-backdrop" id="modalBackdrop" hidden>
+  <div class="modal" id="modal">
+    <button class="modal-close" id="modalClose">×</button>
+    <div id="modalContent"></div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="config.js"></script>
+<script src="admin.js"></script>
+</body>
+</html>

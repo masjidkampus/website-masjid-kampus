@@ -1,0 +1,6 @@
+# Local secrets (optional)
+.env
+.env.local
+# OS / editor
+.DS_Store
+.vscode/
