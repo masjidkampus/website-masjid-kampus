@@ -23,7 +23,12 @@
     <p class="muted">Gunakan akun admin Supabase untuk mengelola data website.</p>
     <form id="loginForm">
       <label>Email<input type="email" id="loginEmail" required autocomplete="email" placeholder="admin@contoh.id"></label>
-      <label>Password<input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Password"></label>
+      <label class="password-field">Password
+        <span class="password-input-wrap">
+          <input type="password" id="loginPassword" required autocomplete="current-password" placeholder="Password">
+          <button type="button" class="password-toggle" id="passwordToggle" aria-label="Tampilkan password" aria-pressed="false">Tampilkan</button>
+        </span>
+      </label>
       <button class="btn btn-primary full" id="loginBtn" type="submit">Masuk</button>
       <p id="loginStatus" class="form-status"></p>
     </form>

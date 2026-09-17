@@ -6,11 +6,23 @@
   const $ = id => document.getElementById(id);
   const sb = configured ? window.supabase.createClient(url, key) : null;
 
+  $("passwordToggle").addEventListener("click", () => {
+    const passwordInput = $("loginPassword");
+    const isVisible = passwordInput.type === "text";
+    passwordInput.type = isVisible ? "password" : "text";
+    $("passwordToggle").textContent = isVisible ? "Tampilkan" : "Sembunyikan";
+    $("passwordToggle").setAttribute("aria-label", isVisible ? "Tampilkan password" : "Sembunyikan password");
+    $("passwordToggle").setAttribute("aria-pressed", String(!isVisible));
+  });
+
   let currentUser = null;
   let allRequests = [];
   let allMessages = [];
   let allEvents = [];
   let allDonations = [];
+  let dashboardUserId = null;
+  let dashboardInitPromise = null;
+  let navigationBound = false;
 
   if (!configured) {
     $("loginStatus").textContent = "Isi config.js terlebih dahulu dengan URL dan Publishable Key Supabase.";
@@ -68,31 +80,62 @@
     location.reload();
   });
 
+  sb.auth.getSession().then(({ data: { session } }) => {
+    if (session?.user) initDashboard(session.user);
+  });
+
   sb.auth.onAuthStateChange((event, session) => {
-    if (session?.user && event !== "SIGNED_OUT") initDashboard(session.user);
+    if (event === "SIGNED_OUT") {
+      dashboardUserId = null;
+      showLogin();
+      return;
+    }
+    if (session?.user) initDashboard(session.user);
   });
 
   async function initDashboard(user) {
-    currentUser = user;
-    // Akses admin benar-benar dicek ke database dengan RPC.
-    const { data: isAdmin, error } = await sb.rpc("is_admin");
-    if (error || isAdmin !== true) {
-      await sb.auth.signOut();
-      $("loginStatus").textContent = "Akun ini belum diberi akses administrator.";
-      $("loginBtn").disabled = false; $("loginBtn").textContent = "Masuk";
-      return;
+    if (dashboardUserId === user.id && !$('dashboardView').hidden) return;
+    if (dashboardInitPromise) return dashboardInitPromise;
+
+    dashboardInitPromise = (async () => {
+      currentUser = user;
+      // Akses admin benar-benar dicek ke database dengan RPC.
+      const { data: isAdmin, error } = await sb.rpc("is_admin");
+      if (error || isAdmin !== true) {
+        dashboardUserId = null;
+        await sb.auth.signOut();
+        showLogin("Akun ini belum diberi akses administrator.");
+        return;
+      }
+
+      dashboardUserId = user.id;
+      $("loginView").hidden = true;
+      $("dashboardView").hidden = false;
+      $("adminEmail").textContent = user.email || "Admin";
+      $("adminAvatar").textContent = (user.email || "A").slice(0,1).toUpperCase();
+
+      bindNavigation();
+      await refreshAll();
+    })();
+
+    try {
+      await dashboardInitPromise;
+    } finally {
+      dashboardInitPromise = null;
     }
+  }
 
-    $("loginView").hidden = true;
-    $("dashboardView").hidden = false;
-    $("adminEmail").textContent = user.email || "Admin";
-    $("adminAvatar").textContent = (user.email || "A").slice(0,1).toUpperCase();
-
-    bindNavigation();
-    await refreshAll();
+  function showLogin(message = "") {
+    $("dashboardView").hidden = true;
+    $("loginView").hidden = false;
+    $("loginStatus").textContent = message;
+    $("loginBtn").disabled = false;
+    $("loginBtn").textContent = "Masuk";
   }
 
   function bindNavigation() {
+    if (navigationBound) return;
+    navigationBound = true;
     document.querySelectorAll(".admin-nav-item").forEach(btn => {
       btn.addEventListener("click", () => openSection(btn.dataset.section));
     });
